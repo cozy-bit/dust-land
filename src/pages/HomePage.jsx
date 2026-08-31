@@ -1,11 +1,11 @@
 ﻿import { HeroSection } from '../components/sections/HeroSection';
 import { BetaBar } from '../components/sections/BetaBar';
 import { PromoSection } from '../components/sections/PromoSection';
-import { FeaturesSection } from '../components/sections/FeaturesSection';
-import { BetaDetailsSection } from '../components/sections/BetaDetailsSection';
 import { AboutGameSection } from '../components/sections/AboutGameSection';
+import { FeaturesSection } from '../components/sections/FeaturesSection';
 import { ImmerseSection } from '../components/sections/ImmerseSection';
 import { SystemRequirementsSection } from '../components/sections/SystemRequirementsSection';
+import { BetaDetailsSection } from '../components/sections/BetaDetailsSection';
 import { ReleaseSection } from '../components/sections/ReleaseSection';
 
 export const HomePage = () => {
@@ -16,18 +16,20 @@ export const HomePage = () => {
       <BetaBar />
       <PromoSection />
 
-      {/* 2. Шухрат (+ слайды Амирхона) */}
-      <FeaturesSection />
-      <BetaDetailsSection />
-
-      {/* 3. Бахтовар */}
+      {/* 2. Бахтовар */}
       <AboutGameSection />
+
+      {/* 3. Шухрат + Амирхон */}
+      <FeaturesSection />
 
       {/* 4. Амирхон */}
       <ImmerseSection />
       <SystemRequirementsSection />
 
-      {/* 5. Бахтовар (предфутерный блок) */}
+      {/* 5. Шухрат */}
+      <BetaDetailsSection />
+
+      {/* 6. Бахтовар */}
       <ReleaseSection />
     </div>
   );
