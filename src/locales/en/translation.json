@@ -1,0 +1,17 @@
+﻿{
+  "nav": {
+    "home": "HOME",
+    "game": "GAME",
+    "features": "FEATURES",
+    "playBeta": "PLAY THE BETA"
+  },
+  "hero": {
+    "title": "TRY TO SURVIVE"
+  },
+  "betaBar": {
+    "subtitle": "JOIN THE BETA TEST RIGHT NOW AND WIN VALUABLE PRIZES!",
+    "socials": "SOCIALS",
+    "register": "REGISTER FOR BETA",
+    "date": "FEBRUARY 21-23TH, 2023"
+  }
+}
