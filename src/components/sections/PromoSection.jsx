@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import locationImg from '../../assets/images/promo-location.jpg';
+import soldierImg from '../../assets/images/character-soldier.png';
 
 const HEX = 'polygon(18px 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 18px 100%, 0 50%)';
 
@@ -51,11 +52,17 @@ export const PromoSection = () => {
           </a>
         </div>
 
-        <div className="w-full">
+        <div className="relative w-full">
           <img
             src={locationImg}
             alt={t('promo.imageAlt')}
             className="aspect-square w-full border border-white/10 object-cover"
+          />
+          <img
+            src={soldierImg}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-[2%] left-1/2 h-[90%] max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)]"
           />
         </div>
       </div>
