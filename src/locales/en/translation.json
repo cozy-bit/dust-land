@@ -6,7 +6,10 @@
     "playBeta": "PLAY THE BETA"
   },
   "hero": {
-    "title": "TRY TO SURVIVE"
+    "title": "TRY TO SURVIVE",
+    "titleLine1": "TRY TO",
+    "titleLine2": "SURVIVE",
+    "imageAlt": "Dustland soldier"
   },
   "betaBar": {
     "subtitle": "JOIN THE BETA TEST RIGHT NOW AND WIN VALUABLE PRIZES!",
