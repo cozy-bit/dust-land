@@ -1,4 +1,4 @@
-﻿{
+{
   "nav": {
     "home": "HOME",
     "game": "GAME",
@@ -13,5 +13,13 @@
     "socials": "SOCIALS",
     "register": "REGISTER FOR BETA",
     "date": "FEBRUARY 21-23TH, 2023"
+  },
+  "promo": {
+    "lead": "PARTICIPATE IN THE OPEN BETA TEST OF THE",
+    "title": "DUSTLAND GAME",
+    "tail": "AND GET *BATTLE PASS* AND A *TESTER'S SKIN* AS A GIFT",
+    "text": "The first several thousand players who register and share the news on a social network will receive Steam gift cards as a bonus.",
+    "register": "REGISTER NOW",
+    "imageAlt": "Dustland soldier"
   }
 }
