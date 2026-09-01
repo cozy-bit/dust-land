@@ -16,10 +16,12 @@
   },
   "promo": {
     "lead": "PARTICIPATE IN THE OPEN BETA TEST OF THE",
-    "title": "DUSTLAND GAME",
-    "tail": "AND GET *BATTLE PASS* AND A *TESTER'S SKIN* AS A GIFT",
-    "text": "The first several thousand players who register and share the news on a social network will receive Steam gift cards as a bonus.",
+    "titleTop": "DUST LAND",
+    "titleBottom": "GAME",
+    "tail": "AND GET 1 BATTLE PASS AND A «TESTER» SKIN AS A GIFT!",
+    "card1": "SPEND THE MOST HOURS IN THE GAME, SHARE YOUR APOCALYPTIC EXPERIENCE WITH YOUR FRIENDS VIA SOCIAL MEDIA, USING THE HASHTAG #DUSTLAND AND GET A STEAM GIFT CARD!",
+    "card2": "THE FIRST 100 MOST ACTIVE PLAYERS WILL RECEIVE $20 STEAM GIFT CARDS!",
     "register": "REGISTER NOW",
-    "imageAlt": "Dustland soldier"
+    "imageAlt": "Dustland wasteland location"
   }
 }
