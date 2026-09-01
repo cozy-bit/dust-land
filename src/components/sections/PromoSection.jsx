@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import locationImg from '../../assets/images/promo-location.jpg';
 
 const HEX = 'polygon(18px 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 18px 100%, 0 50%)';
 
@@ -51,15 +52,11 @@ export const PromoSection = () => {
         </div>
 
         <div className="w-full">
-          <div className="relative aspect-square w-full overflow-hidden border border-white/10 bg-gradient-to-br from-orange-900/50 via-amber-800/25 to-zinc-900">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:44px_44px]"
-            />
-            <span className="absolute bottom-4 left-4 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
-              {t('promo.imageAlt')}
-            </span>
-          </div>
+          <img
+            src={locationImg}
+            alt={t('promo.imageAlt')}
+            className="aspect-square w-full border border-white/10 object-cover"
+          />
         </div>
       </div>
     </section>
