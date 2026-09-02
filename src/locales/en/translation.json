@@ -5,6 +5,14 @@
     "features": "FEATURES",
     "playBeta": "PLAY THE BETA"
   },
+  "footer": {
+    "terms": "TERMS OF USE",
+    "cookies": "COOKIES",
+    "privacy": "PRIVACY POLICY",
+    "press": "PRESS",
+    "contact": "CONTACT US",
+    "copyright": "© 2023 REDPAD GAMES AND DUSTLAND ARE TRADEMARKS OF REDPAD GAMES AG ®. ALL OTHER TRADEMARKS AND TRADE NAMES ARE THE PROPERTY OF THEIR RESPECTIVE OWNERS"
+  },
   "hero": {
     "title": "TRY TO SURVIVE",
     "titleLine1": "TRY TO",
