@@ -13,6 +13,7 @@ export const HomePage = () => {
     <div className="flex flex-col w-full gap-4">
       {/* 1. Бурхониддин */}
       <HeroSection />
+      <BetaBar />
       <PromoSection />
 
       {/* 2. Бахтовар */}
@@ -20,9 +21,6 @@ export const HomePage = () => {
 
       {/* 3. Шухрат + Амирхон */}
       <FeaturesSection />
-
-      {/* 4. Бурхониддин */}
-      <BetaBar />
 
       {/* 5. Амирхон */}
       <ImmerseSection />

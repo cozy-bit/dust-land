@@ -1,17 +1,63 @@
-﻿{
+{
   "nav": {
     "home": "HOME",
     "game": "GAME",
     "features": "FEATURES",
     "playBeta": "PLAY THE BETA"
   },
+  "footer": {
+    "terms": "TERMS OF USE",
+    "cookies": "COOKIES",
+    "privacy": "PRIVACY POLICY",
+    "press": "PRESS",
+    "contact": "CONTACT US",
+    "copyright": "© 2023 REDPAD GAMES AND DUSTLAND ARE TRADEMARKS OF REDPAD GAMES AG ®. ALL OTHER TRADEMARKS AND TRADE NAMES ARE THE PROPERTY OF THEIR RESPECTIVE OWNERS"
+  },
   "hero": {
-    "title": "TRY TO SURVIVE"
+    "title": "TRY TO SURVIVE",
+    "titleLine1": "TRY TO",
+    "titleLine2": "SURVIVE",
+    "imageAlt": "Dustland soldier"
   },
   "betaBar": {
     "subtitle": "JOIN THE BETA TEST RIGHT NOW AND WIN VALUABLE PRIZES!",
     "socials": "SOCIALS",
     "register": "REGISTER FOR BETA",
     "date": "FEBRUARY 21-23TH, 2023"
+  },
+  "promo": {
+    "lead": "PARTICIPATE IN THE OPEN BETA TEST OF THE",
+    "titleTop": "DUST LAND",
+    "titleBottom": "GAME",
+    "tail": "AND GET 1 BATTLE PASS AND A «TESTER» SKIN AS A GIFT!",
+    "card1": "SPEND THE MOST HOURS IN THE GAME, SHARE YOUR APOCALYPTIC EXPERIENCE WITH YOUR FRIENDS VIA SOCIAL MEDIA, USING THE HASHTAG #DUSTLAND AND GET A STEAM GIFT CARD!",
+    "card2": "THE FIRST 100 MOST ACTIVE PLAYERS WILL RECEIVE $20 STEAM GIFT CARDS!",
+    "register": "REGISTER NOW",
+    "imageAlt": "Dustland wasteland location"
+  },
+  "features": {
+    "title": "FEATURES",
+    "items": [
+      {
+        "title": "DECIDE ON *THE WAYS*",
+        "text": "TO ACHIEVE YOUR MISSION GOAL. BUT BE ON YOUR GUARD, AS THE SHORTEST PATH ISN'T ALWAYS THE EASIEST...WILL YOU DARE?"
+      },
+      {
+        "title": "OWN A UNIQUE *ARSENAL!*",
+        "text": "USE A WEAPON CONSTRUCTOR TO CREATE SUPER-POWERFUL GUNS!"
+      },
+      {
+        "title": "*BEWARE* OF",
+        "text": "MUTANTS, DEADLY BEASTS, AND HOSTILE GANGS, MANY OF WHICH ARE CANNIBALISTIC..."
+      },
+      {
+        "title": "CHOOSE ONE FROM THE FOUR *UNIQUE FACTIONS*",
+        "text": "EACH WITH ITS OWN TERRITORIES, WHERE PLAYERS CAN SAFELY TRADE AND COLLABORATE."
+      },
+      {
+        "title": "ENJOY THE|*STUNNING*|GRAPHICS",
+        "text": "THAT WILL ALLOW YOU TO FULLY EXPERIENCE THE HOSTILITY OF THE SURROUNDING ENVIRONMENT"
+      }
+    ]
   }
 }

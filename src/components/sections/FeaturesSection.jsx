@@ -1,10 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { BaseSlide, WeaponsSlide, MutantsSlide, FactionsSlide } from './features';
+import {
+  BaseSlide,
+  WeaponsSlide,
+  GraphicsSlide,
+  MutantsSlide,
+  FactionsSlide,
+} from './features';
 
 const SLIDES = [
   { id: 'base', component: BaseSlide, indicatorIndex: 0 },
   { id: 'weapons', component: WeaponsSlide, indicatorIndex: 1 },
+  { id: 'graphics', component: GraphicsSlide, indicatorIndex: 2 },
   { id: 'mutants', component: MutantsSlide, indicatorIndex: 3 },
   { id: 'factions', component: FactionsSlide, indicatorIndex: 4 },
 ];
@@ -37,12 +44,10 @@ export const FeaturesSection = () => {
     setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
   };
 
-  // Переключение по клику на индикатор пагинации (сопоставление индексов 0..4)
   const handleSelectIndicator = (indicatorIdx) => {
-    if (indicatorIdx === 0) setCurrentIndex(0);
-    else if (indicatorIdx === 1 || indicatorIdx === 2) setCurrentIndex(1);
-    else if (indicatorIdx === 3) setCurrentIndex(2);
-    else if (indicatorIdx === 4) setCurrentIndex(3);
+    if (indicatorIdx >= 0 && indicatorIdx < SLIDES.length) {
+      setCurrentIndex(indicatorIdx);
+    }
   };
 
   const currentSlideData = SLIDES[currentIndex];
