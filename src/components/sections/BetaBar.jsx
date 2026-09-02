@@ -67,14 +67,21 @@ export const BetaBar = () => {
 
       {/* desktop: interlocking angular strip */}
       <div className="relative hidden w-full items-stretch lg:flex">
-        <div className="flex flex-1 items-center gap-6 bg-zinc-800 py-7 pl-12 pr-28 [clip-path:polygon(0_0,100%_0,calc(100%-44px)_100%,0_100%)]">
+        <div className="flex flex-1 items-center gap-6 bg-zinc-800 py-7 pl-12 pr-24 [clip-path:polygon(0_0,100%_0,calc(100%-32px)_100%,0_100%)]">
           <span className="text-xl font-extrabold uppercase tracking-wide text-white">
             {t('betaBar.socials')}
           </span>
           <SocialLinks />
         </div>
 
-        <div className="flex flex-1 items-center justify-end bg-zinc-800 py-7 pl-12 pr-12 [clip-path:polygon(44px_0,100%_0,100%_100%,0_100%)]">
+        <a
+          href="#"
+          className="relative z-10 -mx-9 -my-5 flex items-center justify-center bg-[#F26D1F] px-24 py-9 text-2xl font-extrabold uppercase tracking-wide text-white shadow-[0_0_50px_rgba(242,109,31,0.4)] transition-[filter] hover:brightness-110 [clip-path:polygon(32px_0,100%_0,calc(100%-32px)_100%,0_100%)]"
+        >
+          {t('betaBar.register')}
+        </a>
+
+        <div className="flex flex-1 items-center justify-end bg-zinc-800 py-7 pl-24 pr-12 [clip-path:polygon(32px_0,100%_0,100%_100%,0_100%)]">
           <span className="text-xl font-bold uppercase tracking-wide text-zinc-200">
             {t('betaBar.date')}
           </span>
@@ -89,6 +96,13 @@ export const BetaBar = () => {
           </span>
           <SocialLinks />
         </div>
+
+        <a
+          href="#"
+          className="flex w-full max-w-sm items-center justify-center bg-[#F26D1F] px-10 py-4 text-lg font-extrabold uppercase tracking-wide text-white shadow-[0_0_40px_rgba(242,109,31,0.3)] transition-[filter] hover:brightness-110 [clip-path:polygon(20px_0,100%_0,calc(100%-20px)_100%,0_100%)]"
+        >
+          {t('betaBar.register')}
+        </a>
 
         <span className="text-base font-bold uppercase tracking-wide text-zinc-200">
           {t('betaBar.date')}
