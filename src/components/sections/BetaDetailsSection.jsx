@@ -37,7 +37,7 @@ export const BetaDetailsSection = () => {
       ];
 
   return (
-    <section className="relative w-full bg-[#06080b] text-white py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
+    <section id="register" className="relative w-full bg-[#06080b] text-white py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
       {/* 1. Глубокий матовый фон со сферами */}
       <img
         src={betaDetailsBg}

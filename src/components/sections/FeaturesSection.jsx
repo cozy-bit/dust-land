@@ -63,7 +63,7 @@ export const FeaturesSection = () => {
   const CurrentSlideComponent = currentSlideData.component;
 
   return (
-    <section className="relative w-full bg-black py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center select-none overflow-hidden">
+    <section id="features" className="relative w-full bg-black py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center select-none overflow-hidden">
       {/* Заголовок секции FEATURES */}
       <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white text-center uppercase tracking-[0.16em] sm:tracking-[0.24em] mb-10 sm:mb-14 drop-shadow-[0_0_25px_rgba(255,255,255,0.15)]">
         {t('features.title')}
