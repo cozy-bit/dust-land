@@ -4,13 +4,29 @@ import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import logo from '../../assets/images/logo-dustland.png';
 
-const CHEVRON = 'polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%)';
+const ARROW =
+  'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%)';
 
 const NAV = [
   { key: 'nav.home', to: '/' },
   { key: 'nav.game', to: '/#game' },
   { key: 'nav.features', to: '/#features' },
 ];
+
+const Tab = ({ children, className = '', fillClass = 'bg-[#101014]', ...props }) => (
+  <div
+    style={{ clipPath: ARROW }}
+    className={`bg-white/25 p-px ${className}`}
+    {...props}
+  >
+    <div
+      style={{ clipPath: ARROW }}
+      className={`flex h-full items-center justify-center px-8 py-3 text-xs font-bold uppercase tracking-[0.15em] ${fillClass}`}
+    >
+      {children}
+    </div>
+  </div>
+);
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
@@ -28,21 +44,29 @@ export const Header = () => {
 
         {/* desktop nav */}
         <nav className="hidden items-stretch lg:flex">
-          {NAV.map((item, idx) => (
-            <NavLink
-              key={item.key}
-              to={item.to}
-              style={{ clipPath: CHEVRON }}
-              className={`flex items-center border border-white/10 bg-white/5 px-7 py-3 text-xs font-bold uppercase tracking-[0.15em] text-zinc-200 transition-colors hover:text-white ${idx > 0 ? '-ml-3.5' : ''}`}
-            >
-              {t(item.key)}
+          <span
+            aria-hidden="true"
+            style={{ clipPath: ARROW }}
+            className="mr-[-12px] w-4 self-stretch bg-white/25"
+          />
+
+          {NAV.map((item) => (
+            <NavLink key={item.key} to={item.to} className="ml-[-12px] first:ml-0">
+              {({ isActive }) => (
+                <Tab
+                  fillClass={
+                    isActive
+                      ? 'bg-[#1b1b22] text-white'
+                      : 'bg-[#101014] text-zinc-300 hover:text-white'
+                  }
+                >
+                  {t(item.key)}
+                </Tab>
+              )}
             </NavLink>
           ))}
 
-          <div
-            style={{ clipPath: CHEVRON }}
-            className="-ml-3.5 flex items-center gap-1 border border-white/10 bg-white/5 px-7 py-3 text-xs font-bold uppercase tracking-[0.15em]"
-          >
+          <Tab className="ml-[-12px]" fillClass="bg-[#101014] gap-1.5">
             <button
               onClick={() => setLang('en')}
               className={lang === 'en' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}
@@ -56,14 +80,15 @@ export const Header = () => {
             >
               RU
             </button>
-          </div>
+          </Tab>
 
-          <a
-            href="#register"
-            style={{ clipPath: CHEVRON }}
-            className="-ml-3.5 flex items-center bg-[#F26D1F] px-8 py-3 text-xs font-extrabold uppercase tracking-[0.15em] text-white shadow-[0_0_35px_rgba(242,109,31,0.45)] transition-[filter] hover:brightness-110"
-          >
-            {t('nav.playBeta')}
+          <a href="#register" className="ml-[-12px]">
+            <Tab
+              className="bg-[#F26D1F] shadow-[0_0_35px_rgba(242,109,31,0.5)]"
+              fillClass="bg-[#F26D1F] text-white font-extrabold hover:brightness-110"
+            >
+              {t('nav.playBeta')}
+            </Tab>
           </a>
         </nav>
 
