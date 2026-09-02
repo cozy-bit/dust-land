@@ -1,6 +1,6 @@
 ﻿import { HeroSection } from '../components/sections/HeroSection';
 import { PromoSection } from '../components/sections/PromoSection';
-import { AboutGameSection } from '../components/sections/AboutGameSection';
+import { AboutGameSection } from './../components/sections/AboutGameSection';
 import { FeaturesSection } from '../components/sections/FeaturesSection';
 import { BetaBar } from '../components/sections/BetaBar';
 import { ImmerseSection } from '../components/sections/ImmerseSection';
