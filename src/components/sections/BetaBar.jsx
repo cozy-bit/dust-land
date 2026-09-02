@@ -60,14 +60,14 @@ export const BetaBar = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative w-full overflow-x-hidden bg-[#0a0a0c] py-14 lg:py-20">
-      <p className="mx-auto mb-8 max-w-xl px-5 text-center text-lg font-bold uppercase leading-snug tracking-wide text-white lg:mb-9 lg:text-xl">
+    <section className="relative w-full overflow-x-hidden bg-[#0a0a0c] pb-16 pt-14 lg:pb-24 lg:pt-16">
+      <p className="mx-auto mb-7 max-w-xl px-5 text-center text-lg font-bold uppercase leading-snug tracking-wide text-white lg:mb-9 lg:text-xl">
         {t('betaBar.subtitle')}
       </p>
 
       {/* desktop: interlocking angular strip */}
-      <div className="hidden w-full items-stretch lg:flex">
-        <div className="flex flex-1 items-center gap-6 bg-zinc-800 py-7 pl-12 pr-24 [clip-path:polygon(0_0,100%_0,calc(100%-28px)_100%,0_100%)]">
+      <div className="relative hidden w-full items-stretch lg:flex">
+        <div className="flex flex-1 items-center gap-6 bg-zinc-800 py-7 pl-12 pr-28 [clip-path:polygon(0_0,100%_0,calc(100%-44px)_100%,0_100%)]">
           <span className="text-xl font-extrabold uppercase tracking-wide text-white">
             {t('betaBar.socials')}
           </span>
@@ -76,12 +76,12 @@ export const BetaBar = () => {
 
         <a
           href="#"
-          className="relative z-10 -mx-10 -my-5 flex items-center justify-center bg-[#F26D1F] px-24 py-9 text-2xl font-extrabold uppercase tracking-wide text-white shadow-[0_0_45px_rgba(242,109,31,0.35)] transition-[filter] hover:brightness-110 [clip-path:polygon(30px_0,100%_0,calc(100%-30px)_100%,0_100%)]"
+          className="relative z-10 -mx-12 -my-6 flex items-center justify-center bg-[#F26D1F] px-28 py-10 text-2xl font-extrabold uppercase tracking-wide text-white shadow-[0_0_55px_rgba(242,109,31,0.4)] transition-[filter] hover:brightness-110 [clip-path:polygon(44px_0,100%_0,calc(100%-44px)_100%,0_100%)]"
         >
           {t('betaBar.register')}
         </a>
 
-        <div className="flex flex-1 items-center justify-end bg-zinc-800 py-7 pl-24 pr-12 [clip-path:polygon(28px_0,100%_0,100%_100%,0_100%)]">
+        <div className="flex flex-1 items-center justify-end bg-zinc-800 py-7 pl-28 pr-12 [clip-path:polygon(44px_0,100%_0,100%_100%,0_100%)]">
           <span className="text-xl font-bold uppercase tracking-wide text-zinc-200">
             {t('betaBar.date')}
           </span>
