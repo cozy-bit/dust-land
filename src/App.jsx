@@ -1,10 +1,17 @@
-﻿import { Layout } from './components/layout/Layout';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/HomePage';
+import { PolicyPage } from './pages/PolicyPage';
 
 export default function App() {
   return (
-    <Layout>
-      <HomePage />
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cookies" element={<PolicyPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
