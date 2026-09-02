@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { cookiePolicy } from '../data/cookiePolicy';
+import { Footer } from '../components/layout/Footer';
 
 export const PolicyPage = () => {
   const { i18n } = useTranslation();
@@ -45,30 +46,34 @@ export const PolicyPage = () => {
   };
 
   return (
-    <article className="relative w-full max-w-4xl mx-auto px-6 sm:px-8 pt-28 sm:pt-36 pb-24 text-zinc-300 select-text">
-      {/* Заголовок страницы */}
-      <h1 className="text-2xl sm:text-3xl md:text-[32px] font-black uppercase tracking-[0.14em] text-white mb-8 sm:mb-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">
-        {data.title}
-      </h1>
+    <>
+      <article className="relative w-full max-w-4xl mx-auto px-6 sm:px-8 pt-28 sm:pt-36 pb-24 text-zinc-300 select-text min-h-[70vh]">
+        {/* Заголовок страницы */}
+        <h1 className="text-2xl sm:text-3xl md:text-[32px] font-black uppercase tracking-[0.14em] text-white mb-8 sm:mb-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+          {data.title}
+        </h1>
 
-      {/* Список разделов политики */}
-      <div className="space-y-4 sm:space-y-5 text-xs sm:text-[13.5px] leading-relaxed">
-        {data.blocks.map((block, i) =>
-          block.h ? (
-            <h2
-              key={i}
-              className="pt-4 text-sm sm:text-[15px] font-bold text-white uppercase tracking-wide"
-            >
-              {block.h}
-            </h2>
-          ) : (
-            <p key={i} className="text-zinc-300 font-normal leading-relaxed">
-              {renderFormattedText(block.p)}
-            </p>
-          )
-        )}
-      </div>
-    </article>
+        {/* Список разделов политики */}
+        <div className="space-y-4 sm:space-y-5 text-xs sm:text-[13.5px] leading-relaxed">
+          {data.blocks.map((block, i) =>
+            block.h ? (
+              <h2
+                key={i}
+                className="pt-4 text-sm sm:text-[15px] font-bold text-white uppercase tracking-wide"
+              >
+                {block.h}
+              </h2>
+            ) : (
+              <p key={i} className="text-zinc-300 font-normal leading-relaxed">
+                {renderFormattedText(block.p)}
+              </p>
+            )
+          )}
+        </div>
+      </article>
+
+      <Footer />
+    </>
   );
 };
 
