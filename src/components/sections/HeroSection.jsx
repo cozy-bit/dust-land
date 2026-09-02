@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { ScrollDownButton } from '../ui/ScrollDownButton';
 
 export const HeroSection = () => {
   const { t } = useTranslation();
@@ -18,6 +19,13 @@ export const HeroSection = () => {
           {t('hero.titleLine2')}
         </span>
       </h1>
+
+      {/* Стреловидная кнопка спуска вниз по странице */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+        <ScrollDownButton />
+      </div>
     </section>
   );
 };
+
+export default HeroSection;
