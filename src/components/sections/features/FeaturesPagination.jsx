@@ -1,46 +1,48 @@
 import React from 'react';
 
-export const FeaturesPagination = ({ total = 5, activeIndex = 0, onSelect }) => {
+const CLIP_ACTIVE = 'polygon(6px 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 6px 100%, 0 50%)';
+const CLIP_LEFT = 'polygon(6px 0, 100% 0, calc(100% - 6px) 50%, 100% 100%, 6px 100%, 0 50%)';
+const CLIP_RIGHT = 'polygon(0 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 0 100%, 6px 50%)';
+
+export const FeaturesPagination = ({
+  total = 5,
+  activeIndex = 0,
+  onSelect,
+  duration = 7000,
+  isPaused = false,
+}) => {
   return (
-    <div className="relative z-20 flex items-center justify-center gap-1.5 sm:gap-2 select-none">
+    <div className="relative z-20 flex items-center justify-center gap-1.5 sm:gap-2 select-none py-2">
       {Array.from({ length: total }).map((_, idx) => {
-        if (idx === activeIndex) {
-          // Активный элемент: вытянутый гексагон со стреловидными концами <=====>
-          return (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => onSelect && onSelect(idx)}
-              aria-label={`Slide ${idx + 1} active`}
-              className="w-16 sm:w-24 h-3 sm:h-3.5 bg-white shadow-[0_0_15px_rgba(255,255,255,0.95)] [clip-path:polygon(6px_0,calc(100%-6px)_0,100%_50%,calc(100%-16px+10px)_100%,6px_100%,0_50%)] transition-all duration-300 cursor-pointer"
-            />
-          );
-        }
-
+        const isActive = idx === activeIndex;
         const isLeft = idx < activeIndex;
+        const clipPath = isActive ? CLIP_ACTIVE : isLeft ? CLIP_LEFT : CLIP_RIGHT;
 
-        if (isLeft) {
-          // Неактивные элементы слева: стрелка влево < с вырезом справа
-          return (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => onSelect && onSelect(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className="w-5 sm:w-7 h-3 sm:h-3.5 bg-[#3a404c] hover:bg-[#555d6e] [clip-path:polygon(6px_0,100%_0,calc(100%-6px)_50%,100%_100%,6px_100%,0_50%)] transition-all duration-200 cursor-pointer"
-            />
-          );
-        }
-
-        // Неактивные элементы справа: стрелка вправо > с вырезом слева
         return (
           <button
             key={idx}
             type="button"
             onClick={() => onSelect && onSelect(idx)}
-            aria-label={`Go to slide ${idx + 1}`}
-            className="w-5 sm:w-7 h-3 sm:h-3.5 bg-[#3a404c] hover:bg-[#555d6e] [clip-path:polygon(0_0,calc(100%-6px)_0,100%_50%,calc(100%-6px)_100%,0_100%,6px_50%)] transition-all duration-200 cursor-pointer"
-          />
+            aria-label={`Slide ${idx + 1}${isActive ? ' active' : ''}`}
+            style={{ clipPath }}
+            className={`relative h-3 sm:h-3.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer overflow-hidden ${
+              isActive
+                ? 'w-16 sm:w-24 bg-[#232936] shadow-[0_0_15px_rgba(255,255,255,0.4)]'
+                : 'w-5 sm:w-7 bg-[#3a404c] hover:bg-[#f58220] hover:scale-110 active:scale-95 opacity-80 hover:opacity-100'
+            }`}
+          >
+            {/* Анимированная светящаяся полоса заполнения (плавно бежит 7 секунд, при ховере замирает на месте и не исчезает) */}
+            {isActive && (
+              <div
+                key={`progress-bar-${activeIndex}`}
+                className="absolute inset-y-0 left-0 bg-white shadow-[0_0_15px_rgba(255,255,255,1)]"
+                style={{
+                  animation: `slideProgress ${duration}ms linear forwards`,
+                  animationPlayState: isPaused ? 'paused' : 'running',
+                }}
+              />
+            )}
+          </button>
         );
       })}
     </div>

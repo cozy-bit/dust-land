@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import logo from '../../assets/images/logo-dustland.png';
@@ -8,20 +8,20 @@ const ARROW =
   'polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%)';
 
 const NAV = [
-  { key: 'nav.home', to: '/' },
-  { key: 'nav.game', to: '/#game' },
-  { key: 'nav.features', to: '/#features' },
+  { key: 'nav.home', to: '/#home', id: 'home' },
+  { key: 'nav.game', to: '/#game', id: 'game' },
+  { key: 'nav.features', to: '/#features', id: 'features' },
 ];
 
-const Tab = ({ children, className = '', fillClass = 'bg-[#101014]', ...props }) => (
+const Tab = ({ children, className = '', fillClass = 'bg-[#101014] text-white', ...props }) => (
   <div
     style={{ clipPath: ARROW }}
-    className={`bg-white/25 p-px ${className}`}
+    className={`bg-white/25 transition-colors duration-200 p-px ${className}`}
     {...props}
   >
     <div
       style={{ clipPath: ARROW }}
-      className={`flex h-full items-center justify-center px-8 py-3 text-xs font-bold uppercase tracking-[0.15em] ${fillClass}`}
+      className={`flex h-full items-center justify-center px-8 py-3 text-xs font-bold uppercase tracking-[0.15em] transition-colors duration-200 ${fillClass}`}
     >
       {children}
     </div>
@@ -31,58 +31,97 @@ const Tab = ({ children, className = '', fillClass = 'bg-[#101014]', ...props })
 export const Header = () => {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const lang = i18n.language?.startsWith('ru') ? 'ru' : 'en';
 
   const setLang = (l) => i18n.changeLanguage(l);
 
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    setOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate(`/#${sectionId}`);
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else if (sectionId === 'home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+      return;
+    }
+
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
+      return;
+    }
+
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `/#${sectionId}`);
+    }
+  };
+
   return (
     <header className="absolute inset-x-0 top-0 z-40">
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-6 md:px-10">
-        <Link to="/" aria-label="Dustland" className="shrink-0">
+        <Link
+          to="/"
+          onClick={(e) => scrollToSection(e, 'home')}
+          aria-label="Dustland"
+          className="shrink-0"
+        >
           <img src={logo} alt="Dustland" className="h-12 w-auto md:h-16" />
         </Link>
 
         {/* desktop nav */}
         <nav className="hidden items-stretch lg:flex">
-          <span
-            aria-hidden="true"
-            style={{ clipPath: ARROW }}
-            className="mr-[-12px] w-4 self-stretch bg-white/25"
-          />
-
           {NAV.map((item) => (
-            <NavLink key={item.key} to={item.to} className="ml-[-12px] first:ml-0">
-              {({ isActive }) => (
-                <Tab
-                  fillClass={
-                    isActive
-                      ? 'bg-[#1b1b22] text-white'
-                      : 'bg-[#101014] text-zinc-300 hover:text-white'
-                  }
-                >
-                  {t(item.key)}
-                </Tab>
-              )}
-            </NavLink>
+            <a
+              key={item.key}
+              href={item.to}
+              onClick={(e) => scrollToSection(e, item.id)}
+              className="ml-[-12px] first:ml-0 group"
+            >
+              <Tab
+                className="group-hover:bg-[#F26D1F]"
+                fillClass="bg-[#101014] text-white group-hover:text-[#F26D1F]"
+              >
+                {t(item.key)}
+              </Tab>
+            </a>
           ))}
 
-          <Tab className="ml-[-12px]" fillClass="bg-[#101014] gap-1.5">
+          <Tab className="ml-[-12px]" fillClass="bg-[#101014] text-white gap-1.5">
             <button
               onClick={() => setLang('en')}
-              className={lang === 'en' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}
+              className={`cursor-pointer transition-colors ${
+                lang === 'en' ? 'text-white' : 'text-zinc-500 hover:text-[#F26D1F]'
+              }`}
             >
               ENG
             </button>
             <span className="text-zinc-600">/</span>
             <button
               onClick={() => setLang('ru')}
-              className={lang === 'ru' ? 'text-white' : 'text-zinc-500 hover:text-zinc-300'}
+              className={`cursor-pointer transition-colors ${
+                lang === 'ru' ? 'text-white' : 'text-zinc-500 hover:text-[#F26D1F]'
+              }`}
             >
               RU
             </button>
           </Tab>
 
-          <a href="#register" className="ml-[-12px]">
+          <a
+            href="/#register"
+            onClick={(e) => scrollToSection(e, 'register')}
+            className="ml-[-12px]"
+          >
             <Tab
               className="bg-[#F26D1F] shadow-[0_0_35px_rgba(242,109,31,0.5)]"
               fillClass="bg-[#F26D1F] text-white font-extrabold hover:brightness-110"
@@ -108,28 +147,34 @@ export const Header = () => {
         <div className="border-y border-white/10 bg-[#0b0b0d] px-5 py-4 lg:hidden">
           <nav className="flex flex-col gap-1">
             {NAV.map((item) => (
-              <NavLink
+              <a
                 key={item.key}
-                to={item.to}
-                onClick={() => setOpen(false)}
-                className="py-2 text-sm font-bold uppercase tracking-[0.15em] text-zinc-200"
+                href={item.to}
+                onClick={(e) => scrollToSection(e, item.id)}
+                className="py-2 text-sm font-bold uppercase tracking-[0.15em] text-zinc-200 hover:text-[#F26D1F] transition-colors"
               >
                 {t(item.key)}
-              </NavLink>
+              </a>
             ))}
             <div className="flex items-center gap-2 py-2 text-sm font-bold uppercase tracking-[0.15em]">
-              <button onClick={() => setLang('en')} className={lang === 'en' ? 'text-white' : 'text-zinc-500'}>
+              <button
+                onClick={() => setLang('en')}
+                className={`transition-colors ${lang === 'en' ? 'text-white' : 'text-zinc-500 hover:text-[#F26D1F]'}`}
+              >
                 ENG
               </button>
               <span className="text-zinc-600">/</span>
-              <button onClick={() => setLang('ru')} className={lang === 'ru' ? 'text-white' : 'text-zinc-500'}>
+              <button
+                onClick={() => setLang('ru')}
+                className={`transition-colors ${lang === 'ru' ? 'text-white' : 'text-zinc-500 hover:text-[#F26D1F]'}`}
+              >
                 RU
               </button>
             </div>
             <a
-              href="#register"
-              onClick={() => setOpen(false)}
-              className="mt-2 bg-[#F26D1F] px-6 py-3 text-center text-xs font-extrabold uppercase tracking-[0.15em] text-white [clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)]"
+              href="/#register"
+              onClick={(e) => scrollToSection(e, 'register')}
+              className="mt-2 bg-[#F26D1F] px-6 py-3 text-center text-xs font-extrabold uppercase tracking-[0.15em] text-white [clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)] hover:brightness-110 transition-all"
             >
               {t('nav.playBeta')}
             </a>
@@ -139,3 +184,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

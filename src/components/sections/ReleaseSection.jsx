@@ -1,4 +1,6 @@
-﻿import React from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Icon = ({ children, label }) => (
   <a
@@ -57,14 +59,16 @@ const MailIcon = () => (
 );
 
 const FOOTER_LINKS = [
-  { label: "Условия использования", href: "#" },
-  { label: "Cookies", href: "/cookies" },
-  { label: "Политика конфиденциальности", href: "#" },
-  { label: "Пресса", href: "#" },
-  { label: "Связаться с нами", href: "#" },
+  { key: "footer.terms", to: "/cookies" },
+  { key: "footer.cookies", to: "/cookies" },
+  { key: "footer.privacy", to: "/cookies" },
+  { key: "footer.press", to: "#" },
+  { key: "footer.contact", to: "mailto:support@redpad.games" },
 ];
 
 export const ReleaseSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative w-full overflow-hidden bg-black">
       <div className="relative isolate flex min-h-[640px] flex-col items-center justify-center px-6 py-24 text-center sm:min-h-[720px]">
@@ -79,14 +83,12 @@ export const ReleaseSection = () => {
           DUSTLAND
         </p>
 
-        <h2 className="max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-7xl">
-          Релиз выходит
-          <br />
-          в песчаную бурю
+        <h2 className="max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-7xl whitespace-pre-line">
+          {t('release.title')}
         </h2>
 
-        <p className="mt-6 text-lg tracking-wide text-white/70">
-          Ожидайте в мае 2023
+        <p className="mt-6 text-lg tracking-wide text-white/70 uppercase">
+          {t('release.date')}
         </p>
 
         <a
@@ -97,10 +99,10 @@ export const ReleaseSection = () => {
             backgroundColor: "#111",
           }}
         >
-          <span className="relative z-10">Зарегистрироваться</span>
+          <span className="relative z-10">{t('release.register')}</span>
           <span className="absolute inset-0 bg-amber-500 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
           <span className="absolute inset-0 z-10 flex items-center justify-center text-black opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-            Зарегистрироваться
+            {t('release.register')}
           </span>
         </a>
       </div>
@@ -119,19 +121,28 @@ export const ReleaseSection = () => {
           </div>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm uppercase tracking-wide text-white/60">
-            {FOOTER_LINKS.map((link, i) => (
-              <React.Fragment key={link.label}>
-                <a href={link.href} className="transition-colors hover:text-white">
-                  {link.label}
-                </a>
+            {FOOTER_LINKS.map((item, i) => (
+              <React.Fragment key={item.key}>
+                {item.to.startsWith('/') ? (
+                  <Link
+                    to={item.to}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="transition-colors hover:text-white"
+                  >
+                    {t(item.key)}
+                  </Link>
+                ) : (
+                  <a href={item.to} className="transition-colors hover:text-white">
+                    {t(item.key)}
+                  </a>
+                )}
                 {i < FOOTER_LINKS.length - 1 && <span className="text-white/25">|</span>}
               </React.Fragment>
             ))}
           </nav>
 
-          <div className="text-center text-xs leading-relaxed text-white/40">
-            <p>© 2023 Redpad Games. Dustland — товарный знак Redpad Games AG.</p>
-            <p>®. Все прочие товарные знаки и торговые наименования являются собственностью их владельцев.</p>
+          <div className="text-center text-xs leading-relaxed text-white/40 uppercase">
+            <p>{t('footer.copyright')}</p>
           </div>
         </div>
       </div>
