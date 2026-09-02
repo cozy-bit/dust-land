@@ -56,7 +56,13 @@ const MailIcon = () => (
   </svg>
 );
 
-const FOOTER_LINKS = ["Условия использования", "Cookies", "Политика конфиденциальности", "Пресса", "Связаться с нами"];
+const FOOTER_LINKS = [
+  { label: "Условия использования", href: "#" },
+  { label: "Cookies", href: "/cookies" },
+  { label: "Политика конфиденциальности", href: "#" },
+  { label: "Пресса", href: "#" },
+  { label: "Связаться с нами", href: "#" },
+];
 
 export const ReleaseSection = () => {
   return (
@@ -113,10 +119,10 @@ export const ReleaseSection = () => {
           </div>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm uppercase tracking-wide text-white/60">
-            {FOOTER_LINKS.map((label, i) => (
-              <React.Fragment key={label}>
-                <a href="#" className="transition-colors hover:text-white">
-                  {label}
+            {FOOTER_LINKS.map((link, i) => (
+              <React.Fragment key={link.label}>
+                <a href={link.href} className="transition-colors hover:text-white">
+                  {link.label}
                 </a>
                 {i < FOOTER_LINKS.length - 1 && <span className="text-white/25">|</span>}
               </React.Fragment>
